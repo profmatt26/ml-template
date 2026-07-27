@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project"
+version = "0.0.1"
+authors = [
+  { name="Author Name", email="email@example.com" },
+]
+description = "description"
+readme = "README.md"
+requires-python = ">=3.12.0"
+dependencies = [
+    "jsonargparse[signatures]==4.50.0",
+    "lightning==2.6.5",
+    "pytest==9.1.1",
+    "tensorboard==2.21.0",
+    "torch==2.13.0",
+]
+
+[tool.setuptools.package-data]
+"project" = ["py.typed"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+project = "project.main:cli_main"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = "src"
+testpaths = "tests"
